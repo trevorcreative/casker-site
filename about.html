@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <meta property="og:title" content="Trevor Creative" />
+  <meta property="og:image" content="http://trevorcreative.com/trevorcreative-banner.jpg"/>
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:description" content="The world of visual development is a journey, and this is my adventure." />
+  <meta property="og:url" content="http://trevorcreative.com/index.html">
+  <title>Casker Creative - About the Company</title>
+  <!-- CSS  -->
+  <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/bootstrap-reboot.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/bootstrap-grid.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-HX5QvHXoIsrUAY0tE/wG8+Wt1MwvaY28d9Zciqcj6Ob7Tw99tFPo4YUXcZw9l930" crossorigin="anonymous">
+  <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
+  <link href="css/custom.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/animate.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <!-- for live site only <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-KwxQKNj2D0XKEW5O/Y6haRH39PE/xry8SAoLbpbCMraqlX7kUP6KHOnrlrtvuJLR" crossorigin="anonymous"> -->
+  <link href="css/web-fonts-with-css/css/fontawesome-all.css" rel="stylesheet">
+  <script defer src="https://pro.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-+1nLPoB0gaUktsZJP+ycZectl3GX7wP8Xf2PE/JHrb7X1u7Emm+v7wJMbAcPr8Ge" crossorigin="anonymous"></script>
+  <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+  <script src='https://www.google.com/recaptcha/api.js'></script>
+  <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
+  <script src="blink-white.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bubbly-bg@1.0.0/dist/bubbly-bg.js"></script>
+  <script>
+    var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation;
+    function init() {
+      canvas = document.getElementById("canvas");
+      anim_container = document.getElementById("animation_container");
+      dom_overlay_container = document.getElementById("dom_overlay_container");
+      var comp=AdobeAn.getComposition("FF895E638FD5794C885C1B3C012DE930");
+      var lib=comp.getLibrary();
+      handleComplete({},comp);
+    }
+    function handleComplete(evt,comp) {
+//This function is always called, irrespective of the content. You can use the variable "stage" after it is created in token create_stage.
+var lib=comp.getLibrary();
+var ss=comp.getSpriteSheet();
+exportRoot = new lib.blink();
+stage = new lib.Stage(canvas);  
+//Registers the "tick" event listener.
+fnStartAnimation = function() {
+  stage.addChild(exportRoot);
+  createjs.Ticker.setFPS(lib.properties.fps);
+  createjs.Ticker.addEventListener("tick", stage);
+}     
+//Code to support hidpi screens and responsive scaling.
+function makeResponsive(isResp, respDim, isScale, scaleType) {    
+  var lastW, lastH, lastS=1;    
+  window.addEventListener('resize', resizeCanvas);    
+  resizeCanvas();   
+  function resizeCanvas() {     
+    var w = lib.properties.width, h = lib.properties.height;      
+    var iw = window.innerWidth, ih=window.innerHeight;      
+    var pRatio = window.devicePixelRatio || 1, xRatio=iw/w, yRatio=ih/h, sRatio=1;      
+    if(isResp) {                
+      if((respDim=='width'&&lastW==iw) || (respDim=='height'&&lastH==ih)) {                    
+        sRatio = lastS;                
+      }       
+      else if(!isScale) {         
+        if(iw<w || ih<h)            
+          sRatio = Math.min(xRatio, yRatio);        
+      }       
+      else if(scaleType==1) {         
+        sRatio = Math.min(xRatio, yRatio);        
+      }       
+      else if(scaleType==2) {         
+        sRatio = Math.max(xRatio, yRatio);        
+      }     
+    }     
+    canvas.width = w*pRatio*sRatio;     
+    canvas.height = h*pRatio*sRatio;
+    canvas.style.width = dom_overlay_container.style.width = anim_container.style.width =  w*sRatio+'px';       
+    canvas.style.height = anim_container.style.height = dom_overlay_container.style.height = h*sRatio+'px';
+    stage.scaleX = pRatio*sRatio;     
+    stage.scaleY = pRatio*sRatio;     
+    lastW = iw; lastH = ih; lastS = sRatio;            
+    stage.tickOnUpdate = false;            
+    stage.update();            
+    stage.tickOnUpdate = true;    
+  }
+}
+makeResponsive(true,'both',false,1);  
+AdobeAn.compositionLoaded(lib.properties.id);
+fnStartAnimation();
+}
+</script>
+</head>
+<body onload="init();">
+  <script>
+    bubbly({
+  colorStart: "#07aba9",
+    colorStop: "#007776",
+
+    compose: "source-over",
+    bubbleFunc: () => `hsla(${Math.random() * 150}, 40%, 30%, .1)`
+  });
+  </script>
+  <header>
+    <nav class="shadow navbar navbar-expand-lg navbar-dark default-color-dark">
+      <a class="navbar-brand" href="index.html">
+        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        viewBox="0 0 253 179.7" style="enable-background:new 0 0 253 179.7;" xml:space="preserve">
+        <style type="text/css">
+        .st0{fill:#FFFFFF;}
+      </style>
+      <title>casker-white</title>
+      <path class="st0" d="M14.8,133.8C17.6,85.2,55.3,29,125.6,29c60.5,0,109.9,44.5,112.7,104.9H253C250.5,65.7,194.4,11.8,126.2,12
+      C59.7,12,3.3,63.4,0,133.8H14.8z"/>
+      <path class="st0" d="M108.3,84.7c-7.3,6.1-11.5,15.1-11.4,24.6c-0.1,7.4,2.6,14.6,7.5,20.2c12,11.9,31.4,11.7,43.2-0.3
+      c0.1-0.1,0.3-0.3,0.4-0.4c4.9-5.3,7.4-12.4,7.2-19.6c0.2-9.6-4.2-18.8-11.9-24.6H177c3.5,8,5.4,16.7,5.5,25.5
+      c0.2,31.6-25.2,57.4-56.8,57.6c-0.1,0-0.3,0-0.4,0c-14.9-0.1-29.2-6-39.8-16.5c-10.8-11.3-16.6-26.4-16.3-42.1
+      c0-7,1.3-13.2,5.4-24.5L108.3,84.7z"/>
+    </svg>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+  aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+  <div class="collapse navbar-collapse " id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="about.html">About</a>
+      </li>
+      <li class="nav-item">
+
+        <a class="nav-link" href="services.html">Services <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Portfolio</a>
+      </li>
+
+    </ul>
+    <ul class="navbar-nav ml-auto nav-flex-icons">
+      <li class="nav-item">
+        <a data-aos="flip-up" data-aos-delay="300" class="btn contact-btn btn-sm" data-toggle="modal" data-target="#exampleModal">contact <i class="fal fa-comment-alt-smile"></i>  </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+</header>
+  <div class="experience-section">
+    <div class="about-bg">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6 pr-3">
+            <h2>Attn: Detail</h2>
+            <hr class="wave animated slideInRight">
+            <p>People notice quality. Whether it's visually obvious, or something just feels a certain way, representing yourself in a polished, thoughtful manner is crucial.</p>
+            <p>Our team is made up of specialized professionals who meet our quality standards. Our high standards are the dri your superior brand.</p>
+          </div>
+          <div class="col-sm-6"data-aos="fade-up" data-aos-duration="3000">
+            <div id="animation_container" style="background-color:rgba(255, 255, 255, 0); width:460px;">
+              <canvas id="canvas" width="460" height="400" style="position: absolute; display: block; background-color:rgba(255, 255, 255, 0);"></canvas>
+              <div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:460px; height:400px; position: absolute; left: 0px; top: 0px; display: block;">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ceo-section">
+    <div class="about-bg">
+      <div class="container">
+        <div class="row">
+          
+          <div class="col-sm-6">
+            <div class="p-4 text-center">
+              <img src="image/tc-600.jpg" class="shadow">
+              
+              <span class="py-4 superpink">Trevor Collinson</span>
+              <p>Founder</p>
+              <i class="fal fa-user-tie"></i>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <h2>Our Beginnings</h2>
+            <hr class="wave-superpink animated slideInRight" data-aos-offset="260">
+            <p>I started Casker Creative after spending over a decade in the field of design and branding. Early in my career, I was encouraged to "not care" about my designs and just give the client what they ask for. It was something I struggled with, because I wanted my efforts to help those companies succeed. I've designed many logos, created print pieces, built websites, but watched as many strategic opportunities were missed.</p>
+            <p></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<footer class="bg-dark text-white">
+  <div class="text-center py-2 lead"><small class="text-muted">&copy; 2018 Casker Creative LLC</small></div>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="exampleModalLabel">Let's Communicate</h2>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p class="text-small">Send us a quick message describing your goals. We typically respond within 24 hours.</p>
+          <ul class="list-unstyled">
+            <li><i class="fal fa-envelope"></i> email: <a href="mailto:info@caskercreative.com"> info@caskercreative.com</a></li>
+          </ul>
+          <form>
+            <div class="form-group">
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name">
+            </div>
+            <div class="form-group">
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="How can we help?"></textarea>
+            </div>
+            <button type="submit" class="btn btn-sm text-white superpink-bg">Send</button>
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="allsiteModal" tabindex="-1" role="dialog" aria-labelledby="allsiteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header superpink-bg">
+          <h2 class="modal-title text-white" id="allsiteModalLabel">Browse more, or contact us.</h2>
+          <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row modal-links">
+                <div class="col"><a href="strategy.html"><i class="fal fa-eye"></i> Strategy</a></li></div>
+                <div class="col"><a href="portfolio.html"><i class="fal fa-trophy-alt"></i> Portfolio</a></li></div>
+                <div class="col"><a href="about.html"><i class="fal fa-user-astronaut"></i> About Us</a></li></div>
+              </div>
+        <hr>
+        <div class="row">
+          <div class="col">
+            <h3>Ready for the next step?</h3>
+            <p class="text-small">If you'd like to talk about your companies needs, or even just ask a question, we would love to hear from you.</p>
+            
+            <form>
+  <div class="form-group">
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name">
+  </div>
+  <div class="form-group">
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="How can we help?"></textarea>
+  </div>
+  <button type="submit" id="register" disabled="disabled" class="btn text-white superpink-bg">Send</button>
+</form>
+              </div> 
+        </div>
+      </div>
+        </div>
+      </div>
+    </div>
+    <a data-toggle="modal" data-target="#allsiteModal" class="mini-menu btn align-middle linear-wipe"  data-aos="fade-up-right" ><i class="fas fa-globe-americas"></i>
+  </a>
+  </footer>
+<script>
+  AOS.init();
+</script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://mdbootstrap.com/previews/docs/latest/js/bootstrap.min.js"></script>
+<script src="https://mdbootstrap.com/previews/docs/latest/js/mdb.min.js"></script>
+<script src="https://mdbootstrap.com/previews/docs/latest/js/jarallax.js"></script>
+<script src="https://mdbootstrap.com/previews/docs/latest/js/jarallax-video.js"></script>
+</body>
+</html>
