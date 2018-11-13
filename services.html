@@ -3,18 +3,20 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
-  <meta property="og:title" content="Trevor Creative" />
-  <meta property="og:image" content="http://trevorcreative.com/trevorcreative-banner.jpg"/>
+  <meta property="og:title" content="Casker Creative" />
+  <meta property="og:image" content="http://caskercreative.com/caskercreative-banner.jpg"/>
   <meta property="og:image:type" content="image/jpeg" />
-  <meta property="og:description" content="The world of visual development is a journey, and this is my adventure." />
-  <meta property="og:url" content="http://trevorcreative.com/index.html">
+  <meta property="og:description" content="We make you visible with strategic brand design." />
+  <meta property="og:url" content="http://caskercreative.com/index.html">
   <title>Casker Creative - Our Services</title>
-  <!-- CSS  -->
   <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/bootstrap-reboot.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/bootstrap-grid.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-TXfwrfuHVznxCssTxWoPZjhcss/hp38gEOH8UPZG/JcXonvBQ6SlsIF49wUzsGno" crossorigin="anonymous">
   <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
+  <link href="css/custom.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/animate.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.2.0/css/light.css" integrity="sha384-pcDR01P1wNxsYZiEYdROCAYhU2u8VHOctLrYRonRFtkf/TGEQFWt0rqFbPGWlyn4" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.2.0/css/fontawesome.css" integrity="sha384-4eP+1rYQmuI3hxrmyE+GT/EIiNbF4R85ciN3jMpmIh+bU5Hz2IU7AdcVe+JS+AJz" crossorigin="anonymous">
   <link href="css/custom.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/animate.css" type="text/css" rel="stylesheet" media="screen,projection"/> 
   <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
@@ -22,73 +24,8 @@
   <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bubbly-bg@1.0.0/dist/bubbly-bg.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
-  <script> new Glide('.glide', {  type: 'carousel',  startAt: 0,  perView: 3}).mount() </script>
-  <script>
-    var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation;
-    function init() {
-      canvas = document.getElementById("canvas");
-      anim_container = document.getElementById("animation_container");
-      dom_overlay_container = document.getElementById("dom_overlay_container");
-      var comp=AdobeAn.getComposition("FF895E638FD5794C885C1B3C012DE930");
-      var lib=comp.getLibrary();
-      handleComplete({},comp);
-    }
-    function handleComplete(evt,comp) {
-//This function is always called, irrespective of the content. You can use the variable "stage" after it is created in token create_stage.
-var lib=comp.getLibrary();
-var ss=comp.getSpriteSheet();
-exportRoot = new lib.blink();
-stage = new lib.Stage(canvas);  
-//Registers the "tick" event listener.
-fnStartAnimation = function() {
-  stage.addChild(exportRoot);
-  createjs.Ticker.setFPS(lib.properties.fps);
-  createjs.Ticker.addEventListener("tick", stage);
-}     
-//Code to support hidpi screens and responsive scaling.
-function makeResponsive(isResp, respDim, isScale, scaleType) {    
-  var lastW, lastH, lastS=1;    
-  window.addEventListener('resize', resizeCanvas);    
-  resizeCanvas();   
-  function resizeCanvas() {     
-    var w = lib.properties.width, h = lib.properties.height;      
-    var iw = window.innerWidth, ih=window.innerHeight;      
-    var pRatio = window.devicePixelRatio || 1, xRatio=iw/w, yRatio=ih/h, sRatio=1;      
-    if(isResp) {                
-      if((respDim=='width'&&lastW==iw) || (respDim=='height'&&lastH==ih)) {                    
-        sRatio = lastS;                
-      }       
-      else if(!isScale) {         
-        if(iw<w || ih<h)            
-          sRatio = Math.min(xRatio, yRatio);        
-      }       
-      else if(scaleType==1) {         
-        sRatio = Math.min(xRatio, yRatio);        
-      }       
-      else if(scaleType==2) {         
-        sRatio = Math.max(xRatio, yRatio);        
-      }     
-    }     
-    canvas.width = w*pRatio*sRatio;     
-    canvas.height = h*pRatio*sRatio;
-    canvas.style.width = dom_overlay_container.style.width = anim_container.style.width =  w*sRatio+'px';       
-    canvas.style.height = anim_container.style.height = dom_overlay_container.style.height = h*sRatio+'px';
-    stage.scaleX = pRatio*sRatio;     
-    stage.scaleY = pRatio*sRatio;     
-    lastW = iw; lastH = ih; lastS = sRatio;            
-    stage.tickOnUpdate = false;            
-    stage.update();            
-    stage.tickOnUpdate = true;    
-  }
-}
-makeResponsive(true,'both',false,1);  
-AdobeAn.compositionLoaded(lib.properties.id);
-fnStartAnimation();
-}
-</script>
 <script>
-  $("#slideshow > div:gt(0)").hide();
+   $("#slideshow > div:gt(0)").hide();
 
 setInterval(function() {
   $('#slideshow > div:first')
@@ -97,7 +34,7 @@ setInterval(function() {
     .fadeIn(500)
     .end()
     .appendTo('#slideshow');
-}, 1000);
+}, 1600);
 </script>
 </head>
 <body onload="init();">
@@ -110,6 +47,15 @@ setInterval(function() {
     bubbleFunc: () => `hsla(${Math.random() * 150}, 40%, 30%, .1)`
   });
   </script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-125657995-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-125657995-1');
+</script>
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark default-color-dark">
       <a class="navbar-brand" href="index.html">
@@ -136,7 +82,7 @@ setInterval(function() {
       </li>
       <li class="nav-item">
 
-        <a class="nav-link" href="services.html">Services <span class="sr-only">(current)</span></a>
+        <a class="nav-link wave-small" href="services.html">Services <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="portfolio.html">Portfolio</a>
@@ -145,7 +91,7 @@ setInterval(function() {
     </ul>
     <ul class="navbar-nav ml-auto nav-flex-icons">
       <li class="nav-item">
-        <a data-aos="flip-up" data-aos-delay="300" class="btn contact-btn btn-sm" data-toggle="modal" data-target="#exampleModal">contact <i class="fal fa-comment-alt-smile"></i>  </a>
+        <a data-aos="flip-up" data-aos-delay="300" class="btn contact-btn btn-sm my-sm-4 my-md-0" data-toggle="modal" data-target="#allsiteModal">contact <i class="fal fa-comment-alt-smile"></i>  </a>
       </li>
     </ul>
   </div>
@@ -157,23 +103,14 @@ setInterval(function() {
         <div class="row">
           <div class="col-md-12 col-lg-6 pr-3">
             <h2>So how do we achieve visibility?</h2>
-            <hr class="wave">
+            <hr class="wave-superpink w-50">
             <p><strong>First</strong> we have a conversation. We sit down and get to know your company, what you offer, and what makes you unique.</p><p>Next, we evaluate the current status of your brand. Together, we figure out your brands development status, analyze your messaging efforts, and determine how we can improve it.</p>
           </div>
-          <div class="col-md-12 col-lg-6 mind align-middle" >
-           <div id="slideshow" class="align-middle mt-md-4" data-aos="fade-in" data-aos="fade-in" data-aos-delay="2000">
-             <div>
-              <i class="fal fa-brain"></i>
-                 </div>
-                 <div>
-                   <i class="far fa-save"></i>
-                 </div>
-                 <div>
-                   <i class="far fa-eye"></i>
-             </div>
-             <div>
-                   <i class="far fa-grin-stars"></i>
-             </div>
+          <div class="col-md-12 col-lg-6 mind" >
+           <div id="slideshow" class="" data-aos="fade-in" data-aos-delay="2000">
+             <div><img src="image/head-eyes0.png"></div>
+             <div><img src="image/head-eyes1.png"></div>
+             <div><img src="image/head-eyes2.png"></div>
           </div>
         </div>
       </div>
@@ -185,40 +122,43 @@ setInterval(function() {
         <div class="row">
           <div class="col center pb-5">
             <h2 class="linear-wipe">Tools to Create Visibility</h2>
+            <div class="py-3">
+              <hr class="m-auto w-25 wave-superteal px-5 py-3">
+            </div>
           </div>
         </div>
-        <div class="row py-3">
-          <div class="col-sm-6 col-md-3">
+        <div class="row">
+          <div class="col-6 col-sm-3">
             <button data-aos="flip-right" data-aos-offset="200" data-toggle="modal" data-target=".branding-modal-lg" class="superpink-bg btn-round"><i class="fal fa-box-heart"></i></button>
             <span>Branding Design</span>
           </div>
-          <div class="col-sm-6 col-md-3">
+          <div class="col-6 col-sm-3">
             <button data-aos="flip-right" data-aos-offset="220" data-toggle="modal" data-target=".web-modal-lg" class="superpink-bg-2 btn-round"><i class="fal fa-image"></i></button>
             <span>Web Graphics</span>
           </div>
-          <div class="col-sm-6 col-md-3">
+          <div class="col-6 col-sm-3">
             <button data-aos="flip-right" data-aos-offset="240" data-toggle="modal" data-target=".photography-modal-lg" class="superpink-bg-3 btn-round"><i class="fal fa-camera-alt"></i></button>
             <span>Photography</span>
           </div>
-          <div class="col-sm-6 col-md-3">
+          <div class="col-6 col-sm-3">
             <button data-aos="flip-right" data-aos-offset="260" data-toggle="modal" data-target=".print-modal-lg" class="superpink-bg-4 btn-round"><i class="fal fa-paste"></i></button>
             <span>Print Materials</span>
           </div>
         </div> 
-        <div class="row py-3">
-          <div class="col-sm-6 col-md-3">
-            <button data-aos="flip-right" data-aos-offset="200" data-toggle="modal" data-target=".strategic-modal-lg" class="superteal-bg btn-round"><i class="fal fa-eye-slash"></i></button>
+        <div class="row mt-5">
+          <div class="col-6 col-sm-3">
+            <button data-aos="flip-right" data-aos-offset="200" data-toggle="modal" data-target=".strategic-modal-lg" class="superteal-bg btn-round"><i class="fal fa-brain"></i></button>
             <span>Strategic Messaging</span>
           </div>
-          <div class="col-sm-6 col-md-3">
+          <div class="col-6 col-sm-3">
             <button data-aos="flip-right" data-aos-offset="210" data-toggle="modal" data-target=".website-modal-lg" class="superteal-bg-2 btn-round"><i class="fal fa-desktop-alt"></i></button>
             <span>Website Design</span>
           </div>
-          <div class="col-sm-6 col-md-3">
+          <div class="col-6 col-sm-3">
             <button data-aos="flip-right" data-aos-offset="220" data-toggle="modal" data-target=".video-modal-lg" class="superteal-bg-3 btn-round"><i class="fal fa-video"></i></button>
             <span>Video Production</span>
           </div>
-          <div class="col-sm-6 col-md-3">
+          <div class="col-6 col-sm-3">
             <button data-aos="flip-right" data-aos-offset="230" data-toggle="modal" data-target=".analytics-modal-lg" class="superteal-bg-4 btn-round"><i class="fal fa-chart-bar"></i></button>
             <span>Analytics and Research</span>
           </div>
@@ -235,38 +175,7 @@ setInterval(function() {
 </div>
 <footer class="bg-dark text-white">
   <div class="text-center py-2 lead"><small class="text-muted">&copy; 2018 Casker Creative LLC</small></div>
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h2 class="modal-title" id="exampleModalLabel">Let's Communicate</h2>
-          <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <p class="text-small">Send us a quick message describing your goals. We typically respond within 24 hours.</p>
-          <ul class="list-unstyled">
-            <li><i class="fal fa-envelope"></i> email: <a href="mailto:info@caskercreative.com"> info@caskercreative.com</a></li>
-          </ul>
-          <form>
-            <div class="form-group">
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name">
-            </div>
-            <div class="form-group">
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
-              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-            </div>
-            <div class="form-group">
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="How can we help?"></textarea>
-            </div>
-            <button type="submit" class="btn btn-sm text-white superpink-bg" disabled="disabled">Send</button>
-          </form>
-          </div>
-        </div>
-      </div>
-    </div>
+<!-- Modal -->
     <div class="modal fade" id="allsiteModal" tabindex="-1" role="dialog" aria-labelledby="allsiteModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -278,38 +187,46 @@ setInterval(function() {
         </div>
         <div class="modal-body">
           <div class="row modal-links">
-                <div class="col"><a href="strategy.html"><i class="fal fa-eye"></i> Strategy</a></li></div>
-                <div class="col"><a href="portfolio.html"><i class="fal fa-trophy-alt"></i> Portfolio</a></li></div>
-                <div class="col"><a href="about.html"><i class="fal fa-user-astronaut"></i> About Us</a></li></div>
-              </div>
-        <hr>
-        <div class="row">
+            <div class="col"><a href="services.html"><i class="fal fa-eye"></i> Services</a></li></div>
+            <div class="col"><a href="portfolio.html"><i class="fal fa-trophy-alt"></i> Portfolio</a></li></div>
+            <div class="col"><a href="about.html"><i class="fal fa-user-astronaut"></i> About Us</a></li></div>
+          </div>
+        <hr class="m-auto wave-superteal animated flipInX pt-3 " data-aos-offset="260">
+        <div class="row pt-3">
           <div class="col">
             <h3>Ready for the next step?</h3>
             <p class="text-small">If you'd like to talk about your companies needs, or even just ask a question, we would love to hear from you.</p>
-            
-            <form>
-  <div class="form-group">
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name">
-  </div>
-  <div class="form-group">
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-  </div>
-  <div class="form-group">
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="How can we help?"></textarea>
-  </div>
-  <button type="submit" id="register" disabled="disabled" class="btn text-white superpink-bg">Send</button>
-</form>
-              </div> 
+            <div id="form-messages" class="bg-success white-text"></div>
+            <form id="ajax-contact" class="form-group" method="post" action="js/mailer.php">
+              <div class="field">
+                  <label for="name">Name:</label>
+                  <input class="form-control" type="text" id="name" name="name" required>
+              </div>
+              <div class="field mt-2">
+                  <label for="email">Email:</label>
+                  <input class="form-control" type="email" id="email" name="email" required>
+                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+              </div>
+              <div class="field mt-2">
+                  <label for="message">Message:</label>
+                  <textarea class="form-control" id="message" name="message" required></textarea>
+              </div>
+              <div class="field mt-2">
+                  <button class="mt-3 btn btn-sm text-white superpink-bg" type="submit">Send</button>
+              </div>
+            </form>
+            <div class="row pt-3">
+            <div class="col">
+            <p class="text-small"><i class="fal fa-envelope"></i> prefer email? <a href="mailto:info@caskercreative.com"> info@caskercreative.com</a></p></div>
+          </div>
+          </div> 
         </div>
       </div>
         </div>
       </div>
     </div>
-    <a data-toggle="modal" data-target="#allsiteModal" class="mini-menu btn align-middle linear-wipe"  data-aos="fade-up-right" ><i class="fas fa-globe-americas"></i>
+    <a data-toggle="modal" data-target="#allsiteModal" class="mini-menu btn align-middle"  data-aos="fade-up-right" ><i class="fal fa-map-signs"></i>
   </a>
-
   <div class="modal fade branding-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
@@ -320,7 +237,8 @@ setInterval(function() {
         </button>
       </div>
       <div class="modal-body">
-        <p>Modal body text goes here.</p>
+        <img src="image/branddesign.jpg" class="mb-3">
+        <p>Most major companies manage their brand with strategy. The reason for this is simple: it matters how the public perceives you. We design modern, socially conscious, thoughtful brands that connect with the target audience.</p>
       </div>
     </div>
     </div>
@@ -336,7 +254,8 @@ setInterval(function() {
         </button>
       </div>
       <div class="modal-body">
-        <p>Modal body text goes here.</p>
+        <img src="image/webgraphics.jpg" class="mb-3">
+        <p>Whether it's for advertisements, illustrations, or instructions, web graphics are a staple of any online presence. These should be designed intelligently, focusing on effectiveness, and optimized per platform of use. </p>
       </div>
     </div>
     </div>
@@ -352,7 +271,8 @@ setInterval(function() {
         </button>
       </div>
       <div class="modal-body">
-        <p>Modal body text goes here.</p>
+        <img src="image/photo.jpg" class="mb-3">
+        <p>We include photography as a key factor of our brand design strategy. The best way to represent your company, is with imagery of your company. Everyone has seen stock photography. We want to show them you. </p>
       </div>
     </div>
     </div>
@@ -368,7 +288,8 @@ setInterval(function() {
         </button>
       </div>
       <div class="modal-body">
-        <p>Modal body text goes here.</p>
+        <img src="image/printdesign.jpg" class="mb-3">
+        <p>Things like print ads, business cards, or office communications are physical ambassadors of your brand. We create and manage those designs from concept to ink on paper. </p>
       </div>
     </div>
     </div>
@@ -384,7 +305,8 @@ setInterval(function() {
         </button>
       </div>
       <div class="modal-body">
-        <p>Modal body text goes here.</p>
+        <img src="image/messaging.jpg" class="mb-3">
+        <p>Words matter. Every statement made by your company, if effectively communicated, will leave an impression on the audience. We want people to sit up and take notice <em>for the right reasons</em>.</p>
       </div>
     </div>
   </div>
@@ -399,7 +321,8 @@ setInterval(function() {
         </button>
       </div>
       <div class="modal-body">
-        <p>Modal body text goes here.</p>
+        <img src="image/webdesign.jpg" class="mb-3">
+        <p>An online presence is an absolute must. If a potential customer wants to look your company up, you should be a Google search away. Once they're on your site, the information should be designed for maximum effectiveness. We develop your site to make you look good, with your customer in mind.</p>
       </div>
     </div>
     </div>
@@ -415,7 +338,8 @@ setInterval(function() {
         </button>
       </div>
       <div class="modal-body">
-        <p>Modal body text goes here.</p>
+        <img src="image/vidprod.jpg" class="mb-3">
+        <p>Online video consumption has never been higher. We produce high quality video content to help your brand be seen and heard.</p>
       </div>
     </div>
     </div>
@@ -431,7 +355,8 @@ setInterval(function() {
         </button>
       </div>
       <div class="modal-body">
-        <p>Modal body text goes here.</p>
+        <img src="image/analytics.jpg" class="mb-3">
+        <p>It all comes down to numbers in the end. We track our efforts through analytics, and research the competition to help find key areas for a stretegic leg up.</p>
       </div>
     </div>
     </div>
@@ -444,6 +369,7 @@ setInterval(function() {
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://mdbootstrap.com/previews/docs/latest/js/bootstrap.min.js"></script>
 <script src="https://mdbootstrap.com/previews/docs/latest/js/mdb.min.js"></script>
+<script src="js/contact.js"></script>
 <script src="https://mdbootstrap.com/previews/docs/latest/js/jarallax.js"></script>
 <script src="https://mdbootstrap.com/previews/docs/latest/js/jarallax-video.js"></script>
 </body>
